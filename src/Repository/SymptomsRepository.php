@@ -18,7 +18,12 @@ class SymptomsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Symptoms::class);
     }
-
+    public function getSymptomById(int $id): ?Symptoms
+    {
+        return $this->findOneBy([
+            'id' => $id
+        ]);
+    }
     // /**
     //  * @return Symptoms[] Returns an array of Symptoms objects
     //  */

@@ -5,10 +5,20 @@ use App\Entity\Symptoms;
 use App\Entity\Area;
 use App\Entity\Disease;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class SymptomsFixtures extends Fixture
+class SymptomsFixtures extends Fixture implements DependentFixtureInterface
 {
+    public function getDependencies()
+    {
+        return array(
+            AreaFixtures::class,
+        );
+    }
+    /**
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         $legs_area = $manager->getRepository(Area::class)->getAreaById(1);
