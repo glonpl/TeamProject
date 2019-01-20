@@ -1,7 +1,6 @@
 <?php
 
 namespace App\DataFixtures;
-use App\Entity\Area;
 use App\Entity\Disease;
 use App\Entity\Symptoms;
 use Doctrine\Bundle\FixturesBundle\Fixture;
