@@ -18,38 +18,20 @@ class SymptomsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Symptoms::class);
     }
+
     public function getSymptomById(int $id): ?Symptoms
     {
         return $this->findOneBy([
             'id' => $id
         ]);
     }
-    // /**
-    //  * @return Symptoms[] Returns an array of Symptoms objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Symptoms
+    public function findOneByIdJoinedToCategory()
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.FK_Area', 'a')
+            ->addSelect('a')
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
 }

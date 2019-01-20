@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Area index{% endblock %}
+
+{% block body %}
+    <h1>Area index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nazwa</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for area in areas %}
+            <tr>
+                <td>{{ area.id }}</td>
+                <td>{{ area.Name }}</td>
+                <td>
+
+                    <a href="{{ path('area_show', {'id': area.id}) }}" class="btn btn-dark">Pokaż</a>
+                    <a href="{{ path('area_edit', {'id': area.id}) }}" class="btn btn-dark">Edytuj</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">nie znaleziono</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('area_new') }}" class="btn btn-primary">Dodaj nowy</a>
+{% endblock %}

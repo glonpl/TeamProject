@@ -1,3 +1,15 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+areas:
+    path: /areas
+    controller: App\Controller\AreaController::index
+symptoms:
+    path: /symptoms
+    controller: App\Controller\SymptomsController::index
+disease:
+    path: /disease
+    controller: App\Controller\DiseaseController::index
+interview:
+    path: /
+    controller: App\Controller\InterviewController::index
+interview_process:
+    path: /process
+    controller: App\Controller\InterviewController::process
