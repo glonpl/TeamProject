@@ -9,10 +9,10 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Probability</th>
-                <th>actions</th>
+                <th>Nazwa</th>
+                <th>Opis</th>
+                <th>Prawdopodobieństwo</th>
+                <th>Działania</th>
             </tr>
         </thead>
         <tbody>
@@ -23,17 +23,18 @@
                 <td>{{ disease.Description }}</td>
                 <td>{{ disease.Probability }}</td>
                 <td>
-                    <a href="{{ path('disease_show', {'id': disease.id}) }}">show</a>
-                    <a href="{{ path('disease_edit', {'id': disease.id}) }}">edit</a>
+                    <a href="{{ path('disease_show', {'id': disease.id}) }}" class="btn btn-dark">Pokaż</a>
+                    <a href="{{ path('disease_edit', {'id': disease.id}) }}" class="btn btn-dark">Edytuj</a>
+
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Nic nie znaleziono.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('disease_new') }}">Create new</a>
+    <a href="{{ path('disease_new') }}" class="btn btn-primary">Dodaj nowy</a>
 {% endblock %}

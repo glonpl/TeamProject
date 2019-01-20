@@ -11,7 +11,7 @@
                 <th>Id</th>
                 <th>Objaw</th>
                 <th>Obszar</th>
-                <th>actions</th>
+                <th>Działania</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +21,17 @@
                 <td>{{ symptom.Name }}</td>
                 <td>{{ symptom.getFKArea().Name }}</td>
                 <td>
-                    <a href="{{ path('symptoms_show', {'id': symptom.id}) }}">show</a>
-                    <a href="{{ path('symptoms_edit', {'id': symptom.id}) }}">edit</a>
+                    <a href="{{ path('symptoms_show', {'id': symptom.id}) }}" class="btn btn-dark">Pokaż</a>
+                    <a href="{{ path('symptoms_edit', {'id': symptom.id}) }}" class="btn btn-dark">Edytuj</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Nic nie znaleziono.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('symptoms_new') }}">Create new</a>
+    <a href="{{ path('symptoms_new') }}" class="btn btn-primary">Dodaj nowy</a>
 {% endblock %}
