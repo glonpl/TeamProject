@@ -37,9 +37,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('disease_index') }}">back to list</a>
+    <a href="{{ path('disease_index') }}" class="btn btn-primary">Powrót</a>
 
-    <a href="{{ path('disease_edit', {'id': disease.id}) }}">edit</a>
+    <a href="{{ path('disease_edit', {'id': disease.id}) }}" class="btn btn-dark">Edytuj</a>
+
 
     {{ include('disease/_delete_form.html.twig') }}
 {% endblock %}
