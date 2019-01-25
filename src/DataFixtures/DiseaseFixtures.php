@@ -163,11 +163,6 @@ class DiseaseFixtures extends Fixture implements DependentFixtureInterface
         $disease->addRelationWithSymptom($skin_rash);
         $manager->persist($disease);
 
-        $disease = new Disease();
-        $disease->setName("Nieznana");
-        $disease->setDescription("Nie znaleziono w bazie, Udaj się do szpitala.");
-        $disease->setProbability(1);
-        $manager->persist($disease);
 
         $manager->flush();
 
