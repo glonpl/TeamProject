@@ -4,6 +4,29 @@
 
 {% block body %}
     <h1>Interview</h1>
-
-   Twoja choroba to: {{ diesase }}
+    <br>
+    <p>Ilość podanych objawów: <span class="badge badge-success">{{ amount }}</span> </p>
+    <p>Znalezione choroby:</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nazwa choroby</th>
+            <th>Opis</th>
+            <th>Częstość</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for disease in diseases %}
+            <tr>
+                <td>{{ disease.name }}</td>
+                <td>{{ disease.description }}</td>
+                <td>{{ disease.probability }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">nie znaleziono</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

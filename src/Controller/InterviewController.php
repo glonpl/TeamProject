@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/disease")
+ * @Route("/")
  */
 class InterviewController extends AbstractController
 {
@@ -30,20 +30,23 @@ class InterviewController extends AbstractController
     public function process(Request $request, DiseaseRepository $diseaseRepository): Response
     {
         $ids = $request->get('sympthoms');
-        /*$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-        $RAW_QUERY = 'SELECT * FROM  where my_table.field = 1 LIMIT 5;';
+        $query = 'SELECT * FROM disease WHERE ID in (select disease_id from disease_symptoms where symptoms_id is not null)';
 
-        $statement = $em->getConnection()->prepare($RAW_QUERY);
+        for ($i = 0; $i < count($ids); $i++)
+        {
+            $query .= ' and ID in (select disease_id from disease_symptoms where symptoms_id = ' . $ids[$i] . ') ';
+        }
+        $query .= 'order by probability DESC ';
+        $statement = $em->getConnection()->prepare($query);
         $statement->execute();
 
-        $result = $statement->fetchAll();*/
-        dd($ids);
-
-        $disease = $diseaseRepository->getDiseaseByIds($ids);
+        $result = $statement->fetchAll();
 
         return $this->render('interview/disease.html.twig', [
-            'disease' => $disease,
+            'diseases' => $result,
+            'amount' => count($ids),
         ]);
     }
 }

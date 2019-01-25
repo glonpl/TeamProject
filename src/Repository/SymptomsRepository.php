@@ -31,6 +31,7 @@ class SymptomsRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->innerJoin('p.FK_Area', 'a')
             ->addSelect('a')
+            ->orderBy('p.id', 'ASC')
             ->getQuery()
             ->getResult();
     }

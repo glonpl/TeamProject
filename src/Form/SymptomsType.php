@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Symptoms;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,8 +14,10 @@ class SymptomsType extends AbstractType
     {
         $builder
             ->add('Name')
-            ->add('FK_Area')
-            ->add('diseases')
+            ->add('FK_Area', EntityType::class, [
+                'class'       => 'App\Entity\Area',
+                'placeholder' => 'Część ciała',
+            ])
         ;
     }
 
