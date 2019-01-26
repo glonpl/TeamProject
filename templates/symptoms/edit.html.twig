@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Symptoms{% endblock %}
+{% block title %}Edytuj Objaw{% endblock %}
 
 {% block body %}
-    <h1>Edit Symptoms</h1>
+    <h1>Edytuj objaw</h1>
 
     {{ include('symptoms/_form.html.twig', {'button_label': 'Aktualizauj'}) }}
 
-    <a href="{{ path('symptoms_index') }}">back to list</a>
+    <a href="{{ path('symptoms_index') }}" class="btn btn-primary">Powrót</a>
 
     {{ include('symptoms/_delete_form.html.twig') }}
 {% endblock %}
